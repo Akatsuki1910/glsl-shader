@@ -98,7 +98,7 @@ img.width = width
 img.height = height
 const uniforms3 = {
   time: 1.0,
-  rand: 0.0,
+  rand: 1.0,
 }
 let myFilter = new PIXI.Filter(null, filterSource, uniforms3)
 stage.filters = [myFilter]
