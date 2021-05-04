@@ -11,17 +11,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "parcel": "*",
     "pixi.js": "^6.0.2",
     "prettier": "^2.2.1",
     "three": "^0.128.0",
     "typescript": "^4.2.4"
   },
   "devDependencies": {
-    "@parcel/transformer-glsl": "^2.0.0-beta.2",
-    "@parcel/transformer-image": "^2.0.0-beta.2",
-    "@parcel/transformer-sass": "^2.0.0-beta.2",
+    "@parcel/transformer-glsl": "2.0.0-beta.2",
+    "@parcel/transformer-image": "2.0.0-beta.2",
+    "@parcel/transformer-sass": "2.0.0-beta.2",
     "@types/three": "^0.127.1",
+    "parcel": "^2.0.0-beta.2",
     "rimraf": "^3.0.2"
   }
 }
