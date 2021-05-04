@@ -1,9 +1,13 @@
+import './style.scss'
+
 import * as THREE from 'three'
 import * as PIXI from 'pixi.js'
+import ppp from 'url:./icon2.png'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 import vertexSource from './shader/shader.vert'
 import fragmentSource from './shader/shader.frag'
+import filterSource from './filter/filter.frag'
 const width = 400
 const height = 400
 //////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +41,7 @@ renderer.setSize(uniforms.resolution.value.x, uniforms.resolution.value.y)
 // const camera2 = new THREE.Camera()
 const camera2 = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
 
-camera2.position.z = 5
+camera2.position.set(3, 3, 3)
 const scene2 = new THREE.Scene()
 
 const uniforms2 = {
@@ -78,14 +82,41 @@ const lightHelper = new THREE.PointLightHelper(light)
 scene.add(lightHelper)
 const cont = new OrbitControls(camera2, renderer2.domElement)
 //////////////////////////////////////////////////////////////////////////////////
+const stage = new PIXI.Container()
+const renderer3 = PIXI.autoDetectRenderer({
+  width: width,
+  height: height,
+  resolution: 1,
+  antialias: true,
+  // transparent: true,
+})
+document.getElementById('pixi').appendChild(renderer3.view)
+const mm = PIXI.Texture.from(ppp)
+const img = new PIXI.Sprite(mm)
+stage.addChild(img)
+img.width = width
+img.height = height
+const uniforms3 = {
+  time: 1.0,
+  rand: 0.0,
+}
+let myFilter = new PIXI.Filter(null, filterSource, uniforms3)
+stage.filters = [myFilter]
+//////////////////////////////////////////////////////////////////////////////////
+
 let count = 0
 function animation() {
   requestAnimationFrame(animation)
   uniforms.time.value = count / 60
   uniforms2.time.value = count / 60
+  myFilter.uniforms.time = count / 60
+  myFilter.uniforms.rand = Math.random()
   renderer.render(scene, camera)
   renderer2.render(scene2, camera2)
+  renderer3.render(stage)
   cont.update()
   count++
 }
+console.log(1)
 animation()
+// init()
