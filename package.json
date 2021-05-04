@@ -21,6 +21,7 @@
     "@parcel/transformer-glsl": "^2.0.0-beta.2",
     "@parcel/transformer-image": "^2.0.0-beta.2",
     "@parcel/transformer-sass": "^2.0.0-beta.2",
-    "@types/three": "^0.127.1"
+    "@types/three": "^0.127.1",
+    "rimraf": "^3.0.2"
   }
 }

@@ -117,6 +117,5 @@ function animation() {
   cont.update()
   count++
 }
-console.log(1)
 animation()
 // init()
