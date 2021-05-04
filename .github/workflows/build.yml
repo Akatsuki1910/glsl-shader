@@ -44,5 +44,5 @@ jobs:
         run: yarn
 
       - name: Run linter 👀
-        run: rm dist && yarn build
+        run: yarn build
 
